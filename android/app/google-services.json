@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1096763828788",
+    "project_id": "vitaquest",
+    "storage_bucket": "vitaquest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096763828788:android:1128e553faf11cc500f861",
+        "android_client_info": {
+          "package_name": "com.VitaQuest.vita_quest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIEUnjoOlDzJ2Irsu1KdYAscCzeZacfSs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
