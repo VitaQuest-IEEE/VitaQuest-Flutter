@@ -1,9 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vita_quest/core/dependency_injection/get_it_injection.dart';
+import 'firebase_options.dart';
 import 'vita_quest.dart';
 import 'core/database/database_service.dart';
 import 'core/helpers/cache_helper.dart';
@@ -19,6 +21,9 @@ void main() async {
     GoogleFonts.pendingFonts([
       GoogleFonts.cairo(),
     ]),
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    )
   ]);
 
   //? Initialize the database.
