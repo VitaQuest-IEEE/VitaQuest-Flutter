@@ -2,49 +2,55 @@ import 'package:flutter/material.dart';
 
 import '../dependency_injection/get_it_injection.dart';
 
-
 class NavHelper {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  Future<dynamic> _navigate(
+    String route, BuildContext context, {
+    bool removeAll = false,
+    bool replace = false,
+    Function? onResult,
+  }) async {
 
-  Future<dynamic> navigate(Widget page , {bool removeAll = false ,bool replace = false ,Function? onResult })async{
-    assert(navigatorKey.currentState != null,
-    'Please use NavHelper instance with getIt by =>  getIt<NavHelper>()');
-    final route = MaterialPageRoute(builder: (c) => page);
-    if(removeAll) {
-      var result = await Navigator.pushAndRemoveUntil(navigatorKey.currentState!.context, route, (route) => false);
-      if(onResult != null) onResult(result) ;
-    }
-    else if(replace){
-      var result = await Navigator.pushReplacement(navigatorKey.currentState!.context,route);
-      if(onResult != null) onResult(result) ;
-    }
-    else {
-      var result = await Navigator.push(navigatorKey.currentState!.context,route);
-      if(onResult != null) onResult(result) ;
+    if (removeAll) {
+      var result = await Navigator.pushNamedAndRemoveUntil(
+          context, route, (route) => false);
+      if (onResult != null) onResult(result);
+    } else if (replace) {
+      var result = await Navigator.pushReplacementNamed(
+          context, route);
+      if (onResult != null) onResult(result);
+    } else {
+      var result =
+          await Navigator.pushNamed(context, route);
+      if (onResult != null) onResult(result);
     }
   }
 
-  void goBack(){
-    Navigator.pop(navigatorKey.currentState!.context);
+  void _goBack(context) {
+    Navigator.pop(context);
   }
-
 }
 
-navigateTo(Widget page , {bool removeAll = false ,bool replace = false ,Function? onResult })async{
-  getIt<NavHelper>().navigate(page,
+navigateTo(
+ BuildContext context, String route,{
+  bool removeAll = false,
+  bool replace = false,
+  Function? onResult,
+}) async {
+  getIt<NavHelper>()._navigate(
+    route,context,
     removeAll: removeAll,
     replace: replace,
     onResult: onResult,
-);
+  );
 }
 
-void goBack(){
-  getIt<NavHelper>().goBack();
+void goBack(context) {
+  getIt<NavHelper>()._goBack(context);
 }
 
-hideKeyboard(BuildContext context){
+hideKeyboard(BuildContext context) {
   FocusScopeNode scope = FocusScope.of(context);
-  if(!scope.hasPrimaryFocus){
+  if (!scope.hasPrimaryFocus) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
 }

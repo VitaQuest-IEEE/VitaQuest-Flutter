@@ -89,4 +89,5 @@ flutter:
     - assets/fonts/
     - assets/svgs/
     - assets/fonts/cairo/
+    - assets/images/onBoarding/
 
