@@ -1,4 +1,4 @@
-package com.example.vita_quest
+package com.VitaQuest.vita_quest
 
 import io.flutter.embedding.android.FlutterActivity
 
