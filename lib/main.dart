@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vita_quest/core/dependency_injection/get_it_injection.dart';
+import 'core/dependency_injection/get_it_injection.dart';
 import 'firebase_options.dart';
 import 'vita_quest.dart';
 import 'core/database/database_service.dart';

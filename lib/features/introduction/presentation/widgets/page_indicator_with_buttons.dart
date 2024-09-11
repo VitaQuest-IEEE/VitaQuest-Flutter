@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:vita_quest/core/helpers/spacing.dart';
-import 'package:vita_quest/core/theme/app_colors.dart';
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theme/app_colors.dart';
 
-import 'package:vita_quest/features/introduction/presentation/presentation_logic_holder/on_boarding_cubit.dart';
+import '../presentation_logic_holder/on_boarding_cubit.dart';
 
 import 'on_boarding_action_buttons.dart';
 

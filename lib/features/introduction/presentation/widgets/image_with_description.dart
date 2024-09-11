@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:vita_quest/core/helpers/spacing.dart';
-import 'package:vita_quest/features/introduction/presentation/widgets/registration_buttons.dart';
+import '../../../../core/helpers/spacing.dart';
+import 'registration_buttons.dart';
 
 import '../../../../core/theme/app_text_styles.dart';
 import '../presentation_logic_holder/on_boarding_cubit.dart';

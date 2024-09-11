@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:vita_quest/core/helpers/cache_helper.dart';
+import '../helpers/cache_helper.dart';
 
 import '../database/database_provider.dart';
 import '../database/database_service.dart';

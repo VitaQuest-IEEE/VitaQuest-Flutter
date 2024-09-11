@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:vita_quest/core/helpers/navigation_helper.dart';
+import '../../../../core/helpers/navigation_helper.dart';
 
 import '../../../../core/routing/routes.dart';
 
