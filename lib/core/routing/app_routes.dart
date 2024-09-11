@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vita_quest/features/auth_feature/presentation/screens/login_screen.dart';
-import 'package:vita_quest/features/auth_feature/presentation/screens/signup_screen.dart';
-import 'package:vita_quest/features/introduction/presentation/screens/on_boarding_screen.dart';
+import '../../features/auth_feature/presentation/screens/login_screen.dart';
+import '../../features/auth_feature/presentation/screens/signup_screen.dart';
+import '../../features/introduction/presentation/screens/on_boarding_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/introduction/presentation/presentation_logic_holder/on_boarding_cubit.dart';
 import '../../features/introduction/presentation/screens/splash_screen.dart';

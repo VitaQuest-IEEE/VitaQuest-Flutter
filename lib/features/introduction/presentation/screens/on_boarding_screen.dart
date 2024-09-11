@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:vita_quest/core/helpers/app_images.dart';
+import '../../../../core/helpers/app_images.dart';
 
 import '../presentation_logic_holder/on_boarding_cubit.dart';
 import '../widgets/image_with_description.dart';

@@ -31,4 +31,12 @@ class AppTextStyles {
       fontWeight: fontWeight,
     );
   }
+
+  static TextStyle cairoGrey(double fontSize, FontWeight fontWeight) {
+    return setCairoTextStyle(
+      color: AppColors.secondaryGreyColor,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+    );
+  }
 }

@@ -5,23 +5,25 @@ import '../theme/app_colors.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    required this.buttonText,
+    this.buttonText,
     required this.buttonAction,
-    required this.buttonStyle,
+    this.buttonStyle,
     this.height,
     this.width,
     this.borderRadius,
     this.color,
     this.borderColor,
     this.elevation,
+    this.widget,
   });
   factory CustomButton.notFilled({
-    required String buttonText,
-    required Function() buttonAction,
-    required TextStyle buttonStyle,
+    String? buttonText,
+    required void Function() buttonAction,
+    TextStyle? buttonStyle,
     required Color borderColor,
     double? height,
     double? width,
+    Widget? widget,
     double? elevation,
     double? borderRadius,
   }) {
@@ -35,20 +37,28 @@ class CustomButton extends StatelessWidget {
       color: Colors.white,
       borderColor: borderColor,
       elevation: elevation,
+      widget: widget,
     );
   }
-  final String buttonText;
-  final TextStyle buttonStyle;
-  final Function() buttonAction;
+  final String? buttonText;
+  final TextStyle? buttonStyle;
+  final void Function() buttonAction;
   final double? height;
   final double? width;
   final double? elevation;
   final double? borderRadius;
   final Color? color;
+  final Widget? widget;
   final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
+    assert(buttonText != null || widget != null);
+    assert((widget != null && (buttonText != null || buttonStyle != null)) !=
+        true);
+    if (buttonText != null) {
+      assert(buttonStyle != null);
+    }
     return SizedBox(
       width: width ?? double.infinity,
       height: height ?? 50.h,
@@ -65,10 +75,11 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius ?? 8.r),
         ),
         child: Center(
-          child: Text(
-            buttonText,
-            style: buttonStyle,
-          ),
+          child: widget ??
+              Text(
+                buttonText!,
+                style: buttonStyle,
+              ),
         ),
       ),
     );
