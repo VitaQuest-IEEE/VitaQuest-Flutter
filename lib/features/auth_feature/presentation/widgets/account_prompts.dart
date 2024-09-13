@@ -44,7 +44,7 @@ class AccountPrompts extends StatelessWidget {
           splashFactory: NoSplash.splashFactory,
           highlightColor: Colors.transparent,
           onTap: () {
-            navigateTo(context, route);
+            navigateTo(context, route, replace: true);
           },
           child: Text(
             buttonTitle,

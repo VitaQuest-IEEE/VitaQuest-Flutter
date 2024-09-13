@@ -4,23 +4,34 @@ import '../dependency_injection/get_it_injection.dart';
 
 class NavHelper {
   Future<dynamic> _navigate(
-    String route, BuildContext context, {
+    String route,
+    BuildContext context, {
     bool removeAll = false,
     bool replace = false,
     Function? onResult,
+    Object? arguments,
   }) async {
-
     if (removeAll) {
       var result = await Navigator.pushNamedAndRemoveUntil(
-          context, route, (route) => false);
+        context,
+        route,
+        (route) => false,
+        arguments: arguments,
+      );
       if (onResult != null) onResult(result);
     } else if (replace) {
       var result = await Navigator.pushReplacementNamed(
-          context, route);
+        context,
+        route,
+        arguments: arguments,
+      );
       if (onResult != null) onResult(result);
     } else {
-      var result =
-          await Navigator.pushNamed(context, route);
+      var result = await Navigator.pushNamed(
+        context,
+        route,
+        arguments: arguments,
+      );
       if (onResult != null) onResult(result);
     }
   }
@@ -31,16 +42,20 @@ class NavHelper {
 }
 
 navigateTo(
- BuildContext context, String route,{
+  BuildContext context,
+  String route, {
   bool removeAll = false,
   bool replace = false,
   Function? onResult,
+  Object? arguments,
 }) async {
   getIt<NavHelper>()._navigate(
-    route,context,
+    route,
+    context,
     removeAll: removeAll,
     replace: replace,
     onResult: onResult,
+    arguments: arguments,
   );
 }
 

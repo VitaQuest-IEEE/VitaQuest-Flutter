@@ -14,20 +14,26 @@ class RegistrationButtons extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        CustomButton(
-          buttonText: 'Sign Up',
-          buttonAction: () {
-            navigateTo(context, Routes.signUpScreen);
-          },
-          buttonStyle: AppTextStyles.cairoWhite(16, FontWeight.bold),
+        Hero(
+          tag: 'signUp',
+          child: CustomButton(
+            buttonText: 'Sign Up',
+            buttonAction: () {
+              navigateTo(context, Routes.signUpScreen);
+            },
+            buttonStyle: AppTextStyles.cairoWhite(16, FontWeight.bold),
+          ),
         ),
         16.setVerticalSpace,
-        CustomButton(
-          buttonText: 'Log In',
-          buttonAction: () {
-            navigateTo(context, Routes.loginScreen);
-          },
-          buttonStyle: AppTextStyles.cairoWhite(16, FontWeight.bold),
+        Hero(
+          tag: 'login',
+          child: CustomButton(
+            buttonText: 'Log In',
+            buttonAction: () {
+              navigateTo(context, Routes.loginScreen);
+            },
+            buttonStyle: AppTextStyles.cairoWhite(16, FontWeight.bold),
+          ),
         ),
       ],
     );
