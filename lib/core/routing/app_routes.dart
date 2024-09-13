@@ -7,11 +7,34 @@ import '../../features/introduction/presentation/presentation_logic_holder/on_bo
 import '../../features/introduction/presentation/screens/splash_screen.dart';
 import 'routes.dart';
 
-class CustomPageRoute extends MaterialPageRoute {
-  CustomPageRoute({required super.builder});
+class SlideNavigation extends PageRouteBuilder {
+  final Widget page;
+  final bool? onReverseOnly;
 
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 750);
+  SlideNavigation(this.page, {this.onReverseOnly})
+      : super(
+          pageBuilder: (_, animation, __) => page,
+          transitionDuration: const Duration(milliseconds: 500),
+          transitionsBuilder: (_, animation, __, child) {
+            return onReverseOnly ?? false
+                ? animation.status == AnimationStatus.forward
+                    ? child
+                    : SlideTransition(
+                        position: Tween<Offset>(
+                          begin: const Offset(-1, 0),
+                          end: Offset.zero,
+                        ).animate(animation),
+                        child: child,
+                      )
+                : SlideTransition(
+                    position: Tween<Offset>(
+                      begin: const Offset(-1, 0),
+                      end: Offset.zero,
+                    ).animate(animation),
+                    child: child,
+                  );
+          },
+        );
 }
 
 class AppRoutes {
@@ -19,22 +42,23 @@ class AppRoutes {
   Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.splash:
-        return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
-        );
+        return SlideNavigation(const SplashScreen());
       case Routes.loginScreen:
-        return MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
-        );
+        return SlideNavigation(const LoginScreen(), onReverseOnly: true);
       case Routes.signUpScreen:
-        return MaterialPageRoute(
-          builder: (context) => const SignUpScreen(),
-        );
+        return SlideNavigation(const SignUpScreen(), onReverseOnly: true);
       case Routes.onBoarding:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider<OnBoardingCubit>(
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              BlocProvider<OnBoardingCubit>(
             create: (context) => OnBoardingCubit(),
             child: const OnBoardingScreen(),
+          ),
+          transitionDuration: const Duration(milliseconds: 500),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              FadeTransition(
+            opacity: animation,
+            child: child,
           ),
         );
     }
